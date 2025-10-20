@@ -1,0 +1,218 @@
+:root{
+  /* theme variables */
+  --accent1: #1fbfa6;
+  --accent2: #0f6fff;
+  --muted: #9aa0a6;
+  --card: #0f1115;
+  --text: #ffffff;
+}
+html, body{
+  margin:0;
+  padding:0;
+  background:#0b0d10;
+  color:var(--text);
+  font-family:'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+.app{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  min-height:100dvh;
+}
+.sidebar{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  padding:20px;
+  border-right:1px solid rgba(0,0,0,0.08);
+  background:#e4e9f1;
+  color:#0b0d10;
+}
+.brand{
+display:flex;align-items:center;gap:12px
+}
+.brand-logo{
+width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--accent1),var(--accent2));
+display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;box-shadow:0 6px 18px rgba(12,15,20,0.6);overflow:hidden;
+}
+.brand-title{font-weight:600;font-size:16px;color:#0b0d10}
+
+/* Ensure the logo image fits inside the brand-logo container */
+.brand-logo img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+
+
+.nav{
+display:flex;flex-direction:column;gap:8px;margin-top:10px
+}
+.nav-btn{
+  background:transparent;border:0;color:#51606f;text-align:left;padding:10px 12px;border-radius:8px;cursor:pointer;font-weight:600
+}
+.sidebar .nav-btn:hover{background:rgba(0,0,0,0.03)}
+.nav-btn.active{
+  color:#0b0d10;
+  background:rgba(0,0,0,0.06);
+  box-shadow:none;
+}
+
+
+.sidebar-footer{margin-top:auto;color:var(--muted);font-size:14px;text-align:center;display:flex;justify-content:center;padding:12px 0;border-top:1px solid rgba(0,0,0,0.1)}
+
+
+/* Main */
+.main{flex:1;padding:28px;}
+.section{display:none}
+.section.active-section{display:block}
+
+
+h1{margin:0 0 8px 0;font-weight:700}
+.muted{color:var(--muted);font-size:13px}
+
+
+.card{background:var(--card);padding:18px;border-radius:10px;margin-top:14px;border:1px solid rgba(255,255,255,0.02)}
+
+
+/* Form grid */
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group input[type="text"], .form-group input[type="email"], .form-group textarea{
+padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--text);
+}
+.form-group textarea{resize:vertical}
+
+
+.logo-group{grid-column:span 2;display:flex;gap:14px;align-items:center}
+.logo-preview{width:120px;height:80px;background:linear-gradient(135deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.logo-preview img{max-width:100%;max-height:100%;object-fit:contain}
+
+
+.form-actions{display:flex;gap:12px;margin-top:12px}
+.btn{padding:10px 14px;border-radius:8px;border:0;cursor:pointer;font-weight:600}
+.btn.primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#0b0b0b}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.03);color:var(--muted)}
+
+
+.invoice-preview{padding:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border-radius:8px}
+.inv-header{display:flex;gap:12px;align-items:center}
+.inv-logo{width:76px;height:56px;border-radius:6px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;color:#fff}
+.inv-company{font-size:14px}
+.inv-company strong{display:block}
+
+
+/* Responsive */
+/* Tablets */
+@media (max-width:1200px){
+  .app{ grid-template-columns:220px 1fr }
+}
+
+/* Mobile and small tablets */
+@media (max-width:900px){
+  .app{ grid-template-columns:1fr; grid-template-rows:auto 1fr }
+  .sidebar{
+    border-right:none;
+    border-bottom:1px solid rgba(0,0,0,0.1);
+    padding:12px 16px;
+    position:sticky; top:0; z-index:20;
+  }
+  .brand{ gap:10px }
+  .brand-title{ font-size:15px }
+  .nav{ flex-direction:row; gap:8px; margin-top:8px; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none }
+  .nav::-webkit-scrollbar{ display:none }
+  .nav-btn{ white-space:nowrap; padding:8px 10px }
+  .main{ padding:16px }
+  .form-grid{ grid-template-columns:1fr }
+}
+
+/* Small phones */
+@media (max-width:600px){
+  .brand-title{ font-size:14px }
+  .btn{ padding:9px 12px }
+  .card{ padding:14px }
+}
+
+/* Company section light theme overrides */
+#company .card{
+  background:#f7f9fc;
+  color:#0b0d10;
+  border:1px solid rgba(0,0,0,0.06);
+}
+#company h1{ color:#0b0d10 }
+#company .muted{ color:#5f6b7a }
+#company label{ color:#0b0d10 }
+
+#company .form-group input[type="text"],
+#company .form-group input[type="email"],
+#company .form-group textarea{
+  background:#ffffff;
+  color:#0b0d10;
+  border:1px solid rgba(0,0,0,0.1);
+}
+
+#company .btn.ghost{
+  border:1px solid rgba(0,0,0,0.12);
+  color:#51606f;
+}
+
+#company .invoice-preview{
+  background:linear-gradient(180deg, rgba(0,0,0,0.03), transparent);
+}
+
+#company .logo-preview{
+  background:linear-gradient(135deg, rgba(0,0,0,0.03), rgba(0,0,0,0.05));
+}
+
+/* Lighten the area around the company section itself */
+#company{
+  background:#eef3f9;
+  border:1px solid rgba(0,0,0,0.06);
+  border-radius:12px;
+  padding:16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+
+.card-lite{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:12px}
+.items{margin-top:16px}
+.items-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.items-scroll{overflow:auto;border:1px solid rgba(255,255,255,0.06);border-radius:8px}
+.items-table{width:100%;border-collapse:collapse;min-width:680px}
+.items-table th,.items-table td{padding:10px;border-bottom:1px solid rgba(255,255,255,0.06);text-align:left}
+.items-table thead th{font-weight:600;color:var(--text)}
+.items-table input[type="text"],.items-table input[type="number"]{width:100%;box-sizing:border-box;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:transparent;color:var(--text)}
+.items-table .it-total{font-weight:600}
+.totals-wrap{display:grid;grid-template-columns:1fr minmax(280px,360px);gap:16px;margin-top:16px;align-items:start}
+.totals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.totals{border-radius:10px}
+.totals-row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.06)}
+.totals-row.grand{font-size:18px;font-weight:700;border-bottom:0}
+.invoice-actions{justify-content:flex-end}
+
+@media (max-width:900px){
+  .totals-wrap{grid-template-columns:1fr}
+  .totals-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+@media (max-width:600px){
+  .items-table{min-width:560px}
+  .totals-grid{grid-template-columns:1fr 1fr}
+}
+
+/* Invoice section light theme overrides */
+#invoice .card{ background:#f7f9fc; color:#0b0d10; border:1px solid rgba(0,0,0,0.06) }
+#invoice h1{ color:#0b0d10 }
+#invoice .muted{ color:#5f6b7a }
+#invoice label{ color:#0b0d10 }
+
+#invoice .form-group input[type="text"],
+#invoice .form-group input[type="email"],
+#invoice .form-group input[type="number"],
+#invoice .form-group textarea{
+  background:#ffffff; color:#0b0d10; border:1px solid rgba(0,0,0,0.1);
+}
+
+#invoice .card-lite{ background:#ffffff; border:1px solid rgba(0,0,0,0.08) }
+#invoice .items-scroll{ border:1px solid rgba(0,0,0,0.08) }
+#invoice .items-table th, #invoice .items-table td{ border-bottom:1px solid #e5e7eb; color:#0b0d10 }
+#invoice .items-table input[type="text"], #invoice .items-table input[type="number"]{ background:#ffffff; color:#0b0d10; border:1px solid #cbd5e1 }
+#invoice .items-table .it-total{ color:#0b0d10 }
+
+#invoice .totals-row{ border-bottom:1px solid #e5e7eb }
+#invoice .totals-row.grand{ border-bottom:0 }
+#invoice .btn.ghost{ border:1px solid rgba(0,0,0,0.12); color:#51606f }
