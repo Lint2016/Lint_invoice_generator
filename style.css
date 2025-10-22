@@ -13,6 +13,12 @@ html, body{
   color:var(--text);
   font-family:'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
+/* Global layout safety for mobile */
+*, *::before, *::after{ box-sizing:border-box }
+html{ -webkit-text-size-adjust:100% }
+img, svg, video{ max-width:100%; height:auto; display:block }
+.app > .main{ min-width:0 }
+.card, .form-group, .items-table th, .items-table td{ overflow-wrap:anywhere }
 .app{
   display:grid;
   grid-template-columns:260px 1fr;
@@ -119,6 +125,8 @@ padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);backgroun
   .nav-btn{ white-space:nowrap; padding:8px 10px }
   .main{ padding:16px }
   .form-grid{ grid-template-columns:1fr }
+  .logo-group{ grid-column:1 / -1; flex-wrap:wrap; align-items:flex-start }
+  .logo-group > *{ flex:1 1 200px }
 }
 
 /* Small phones */
