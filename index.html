@@ -7,6 +7,7 @@
   <title>LintEdge — Invoice Generator (Step 1)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="shortcut icon" href="assets/LIntEdge2.png" type="image/x-icon">
+  <link rel="preload" as="image" href="assets/LIntEdge2.png" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -15,7 +16,7 @@
   <div class="app">
     <aside class="sidebar">
       <div class="brand">
-        <div class="brand-logo" id="sidebarLogoPlaceholder"><img src="assets/LIntEdge2.png" alt="LintEdge logo"></div>
+        <div class="brand-logo" id="sidebarLogoPlaceholder"><img src="assets/LIntEdge2.png" alt="LintEdge logo" width="40" height="40" loading="eager" decoding="async" fetchpriority="high"></div>
         <div class="brand-title">LintEdge</div>
       </div>
 
