@@ -210,10 +210,7 @@ padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);backgroun
 .totals-row.grand{font-size:18px;font-weight:700;border-bottom:0}
 .invoice-actions{justify-content:flex-end}
 
-@media (max-width:900px){
-  .totals-wrap{grid-template-columns:1fr}
-  .totals-grid{grid-template-columns:repeat(3,1fr)}
-}
+
 
 /* Ensure single column totals on many landscape phones/tablets */
 @media (max-width:1024px){
