@@ -12,14 +12,14 @@ html, body{
   background:#0b0d10;
   color:var(--text);
   font-family:'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-  overflow-x:auto;
+  overflow-x:hidden;
 }
 /* Global layout safety for mobile */
 *, *::before, *::after{ box-sizing:border-box }
 html{ -webkit-text-size-adjust:100% }
 img, svg, video{ max-width:100%; height:auto; display:block }
 .app > .main{ min-width:0 }
-.app{ width:100%; max-width:100%; overflow-x:visible }
+.app{ width:100%; max-width:100%; overflow-x:hidden }
 .card, .form-group, .items-table th, .items-table td{ overflow-wrap:anywhere }
 .app{
   display:grid;
@@ -36,11 +36,11 @@ img, svg, video{ max-width:100%; height:auto; display:block }
   color:#0b0d10;
 }
 .brand{
-display:flex;align-items:center;gap:12px
+  display:flex;align-items:center;gap:12px
 }
 .brand-logo{
-width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--accent1),var(--accent2));
-display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;box-shadow:0 6px 18px rgba(12,15,20,0.6);overflow:hidden;
+  width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--accent1),var(--accent2));
+  display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;box-shadow:0 6px 18px rgba(12,15,20,0.6);overflow:hidden;
 }
 .brand-title{font-weight:600;font-size:16px;color:#0b0d10}
 
@@ -49,7 +49,7 @@ display:flex;align-items:center;justify-content:center;font-weight:700;color:#ff
 
 
 .nav{
-display:flex;flex-direction:column;gap:8px;margin-top:10px
+  display:flex;flex-direction:column;gap:8px;margin-top:10px
 }
 .nav-btn{
   background:transparent;border:0;color:#51606f;text-align:left;padding:10px 12px;border-radius:8px;cursor:pointer;font-weight:600
@@ -82,7 +82,7 @@ h1{margin:0 0 8px 0;font-weight:700}
 .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .form-group{display:flex;flex-direction:column;gap:6px}
 .form-group input[type="text"], .form-group input[type="email"], .form-group textarea{
-padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--text);
+  padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--text);
 }
 .form-group textarea{resize:vertical}
 
@@ -127,7 +127,7 @@ padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);backgroun
   .nav{ flex-direction:row; gap:8px; margin-top:8px; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none }
   .nav::-webkit-scrollbar{ display:none }
   .nav-btn{ white-space:nowrap; padding:8px 10px }
-  .main{ padding:16px; overflow-x:visible }
+  .main{ padding:16px; overflow-x:hidden }
   /* Avoid clipping children inside sections; rely on container sizing instead */
  .section{ max-width:100% }
   .form-grid{ grid-template-columns:1fr }
@@ -140,6 +140,7 @@ padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);backgroun
   .brand-title{ font-size:14px }
   .btn{ padding:9px 12px }
   .card{ padding:14px }
+  .totals-grid{ grid-template-columns:1fr }
 }
 
 /* Company section light theme overrides */
@@ -195,8 +196,8 @@ padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);backgroun
 .items-table .it-total{font-weight:600}
 .totals-wrap{
   display:grid;
-  grid-template-columns:1fr minmax(240px,360px);
-  gap:16px;
+  grid-template-columns:1fr;
+  gap:12px;
   margin-top:16px;
   align-items:start;
   max-width:100%
@@ -210,27 +211,41 @@ padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);backgroun
 .totals-row.grand{font-size:18px;font-weight:700;border-bottom:0}
 .invoice-actions{justify-content:flex-end}
 
+.totals.card-lite{
+    width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  }
 
 
-/* Ensure single column totals on many landscape phones/tablets */
-@media (max-width:1024px){
-  .totals-wrap{grid-template-columns:1fr}
+/* Wide screens: place totals aside inputs */
+@media (min-width:1024px){
+  .totals-wrap{ grid-template-columns: 2fr minmax(300px,420px) }
+  .totals-grid{ grid-template-columns: repeat(3,1fr) }
 }
 
 @media (max-width:600px){
   .items-table{min-width:480px}
-  .totals-grid{grid-template-columns:1fr 1fr}
-  .totals-row{ gap:8px }
-  .totals-row > strong{ font-size:0.95rem; white-space:normal }
+  .totals-grid{grid-template-columns:1fr}
+  /* Stack labels over numbers for totals */
+  .totals-row{ gap:6px; grid-template-columns:1fr }
+  .totals-row > span{ order:1 }
+  .totals-row > strong{ order:2; justify-self:end; font-size:0.95rem; white-space:normal }
   .totals-wrap {
     grid-template-columns: 1fr;
   }
+  .totals.card-lite {
+    padding-left: 0; /* remove left padding on mobile */
+    width: 100%;
+  }
+  /* Stack action buttons on narrow screens */
+  .invoice-actions{ flex-direction:column; align-items:stretch; gap:10px }
+  .invoice-actions .btn{ width:100% }
 }
 
-/* Small phones: stack totals rows to avoid clipping */
-@media (max-width:480px){
-  .totals-row{ grid-template-columns:1fr; gap:4px }
-  .totals-row > strong{ justify-self:end }
+/* Further tighten spacing on very small phones */
+@media (max-width:380px){
+  .totals-row{ gap:4px }
 }
 
 /* Invoice section light theme overrides */
