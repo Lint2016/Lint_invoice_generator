@@ -221,14 +221,14 @@ padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);backgroun
   .items-table{min-width:480px}
   .totals-grid{grid-template-columns:1fr 1fr}
   .totals-row{ gap:8px }
-  .totals-row > strong{ font-size:0.95rem }
+  .totals-row > strong{ font-size:0.95rem; white-space:normal }
   .totals-wrap {
     grid-template-columns: 1fr;
   }
 }
 
-/* Very small phones: stack totals rows to avoid clipping */
-@media (max-width:360px){
+/* Small phones: stack totals rows to avoid clipping */
+@media (max-width:480px){
   .totals-row{ grid-template-columns:1fr; gap:4px }
   .totals-row > strong{ justify-self:end }
 }
@@ -254,4 +254,5 @@ padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);backgroun
 
 #invoice .totals-row{ border-bottom:1px solid #e5e7eb }
 #invoice .totals-row.grand{ border-bottom:0 }
+#invoice .totals-row strong{ color:#0b0d10; white-space:normal }
 #invoice .btn.ghost{ border:1px solid rgba(0,0,0,0.12); color:#51606f }
