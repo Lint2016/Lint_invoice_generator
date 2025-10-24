@@ -195,8 +195,9 @@ padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);backgroun
 .totals-wrap{display:grid;grid-template-columns:1fr minmax(240px,360px);gap:16px;margin-top:16px;align-items:start;max-width:100%}
 .totals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .totals{border-radius:10px;width:100%;max-width:100%}
-.totals-row{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.06)}
-.totals-row > span, .totals-row > strong{min-width:0;max-width:50%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.totals-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.06)}
+.totals-row > span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.totals-row > strong{justify-self:end;white-space:nowrap}
 .totals-row.grand{font-size:18px;font-weight:700;border-bottom:0}
 .invoice-actions{justify-content:flex-end}
 
