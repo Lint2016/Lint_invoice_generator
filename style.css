@@ -129,7 +129,7 @@ padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);backgroun
   .nav-btn{ white-space:nowrap; padding:8px 10px }
   .main{ padding:16px; overflow-x:visible }
   /* Avoid clipping children inside sections; rely on container sizing instead */
-  .section{ max-width:100% }
+ .section{ max-width:100% }
   .form-grid{ grid-template-columns:1fr }
   .logo-group{ grid-column:1 / -1; flex-wrap:wrap; align-items:flex-start }
   .logo-group > *{ flex:1 1 200px }
@@ -193,7 +193,14 @@ padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);backgroun
 .items-table thead th{font-weight:600;color:var(--text)}
 .items-table input[type="text"],.items-table input[type="number"]{width:100%;box-sizing:border-box;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:transparent;color:var(--text)}
 .items-table .it-total{font-weight:600}
-.totals-wrap{display:grid;grid-template-columns:1fr minmax(240px,360px);gap:16px;margin-top:16px;align-items:start;max-width:100%}
+.totals-wrap{
+  display:grid;
+  grid-template-columns:1fr minmax(240px,360px);
+  gap:16px;
+  margin-top:16px;
+  align-items:start;
+  max-width:100%
+}
 .totals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .totals{border-radius:10px;width:100%;max-width:100%}
 .totals{min-width:0}
@@ -218,6 +225,9 @@ padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);backgroun
   .totals-grid{grid-template-columns:1fr 1fr}
   .totals-row{ gap:8px }
   .totals-row > strong{ font-size:0.95rem }
+  .totals-wrap {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Very small phones: stack totals rows to avoid clipping */
