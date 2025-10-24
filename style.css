@@ -19,7 +19,7 @@ html, body{
 html{ -webkit-text-size-adjust:100% }
 img, svg, video{ max-width:100%; height:auto; display:block }
 .app > .main{ min-width:0 }
-.app{ width:100%; max-width:100vw; overflow-x:hidden }
+.app{ width:100%; max-width:100%; overflow-x:hidden }
 .card, .form-group, .items-table th, .items-table td{ overflow-wrap:anywhere }
 .app{
   display:grid;
@@ -66,7 +66,7 @@ display:flex;flex-direction:column;gap:8px;margin-top:10px
 
 
 /* Main */
-.main{flex:1;padding:28px;}
+.main{flex:1;padding:28px; width:100%; max-width:100%;}
 .section{display:none}
 .section.active-section{display:block}
 
